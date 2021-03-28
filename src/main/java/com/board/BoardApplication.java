@@ -19,6 +19,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 스프링 부트의 설정을 나타내는 어노테이션
 테스트를 사용할 때 계속 이 어노테이션을 찾기 때문에 스프링 부트에서는 필수 어노테이션
  */
+
 public class BoardApplication {
 
     public static void main(String[] args) {
