@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 - 회원가입</title>
+    <link rel='stylesheet' href='/webjars/bootstrap/4.5.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link th:href="@{/css/login.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="navbar navbar-dark bg-dark shadow-sm mb-3">
+    <div class="container d-flex justify-content-between">
+        <a href="/" class="navbar-brand d-flex align-items-center">
+            <strong>스프링 게시판</strong>
+        </a>
+    </div>
+
+</div>
+<div class="container">
+    <form action="/register" method="post">
+
+        <div class="text-center" style="padding:50px 0">
+            <div class="logo">signup</div>
+            <!-- Main Form -->
+            <div class="login-form-1">
+                <form id="login-form" class="text-left">
+                    <div class="login-form-main-message"></div>
+                    <div class="main-login-form">
+                        <div class="login-group">
+                            <div class="form-group">
+                                <label for="lg_username" class="sr-only">Username</label>
+                                <input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="username">
+                            </div>
+                            <div class="form-group">
+                                <label for="lg_password" class="sr-only">Password</label>
+                                <input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="password">
+                            </div>
+                        </div>
+                        <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
+                    </div>
+                </form>
+            </div>
+            <!-- end:Main Form -->
+        </div>
+
+
+    </form>
+</div>
+<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

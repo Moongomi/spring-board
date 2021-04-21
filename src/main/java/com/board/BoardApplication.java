@@ -2,8 +2,8 @@ package com.board;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-@SpringBootApplication
 /*
 @EnableAutoConfiguration
 스프링 부트는 개발에 필요한 몇 가지 필수적인 설정들의 처리가 되어있음
@@ -19,7 +19,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 스프링 부트의 설정을 나타내는 어노테이션
 테스트를 사용할 때 계속 이 어노테이션을 찾기 때문에 스프링 부트에서는 필수 어노테이션
  */
-
+@EnableJpaAuditing
+@SpringBootApplication
 public class BoardApplication {
 
     public static void main(String[] args) {

@@ -17,14 +17,8 @@ public class BoardDto {
     private String author;
     private String title;
     private String content;
-
-    @Builder
-    public BoardDto(Long id,String author,String title,String content){
-        this.id = id;
-        this.author = author;
-        this.title = title;
-        this.content = content;
-    }
+    private LocalDateTime createdDate;
+    private LocalDateTime modifiedDate;
 
     public Board toEntity(){
 
@@ -37,6 +31,18 @@ public class BoardDto {
 
         return build;
     }
+
+    @Builder
+    public BoardDto(Long id,String author,String title,String content,LocalDateTime createdDate,LocalDateTime modifiedDate){
+        this.id = id;
+        this.author = author;
+        this.title = title;
+        this.content = content;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
+    }
+
+
 
 
 }

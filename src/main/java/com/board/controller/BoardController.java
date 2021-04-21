@@ -3,6 +3,7 @@ package com.board.controller;
 import com.board.domain.dto.BoardDto;
 import com.board.domain.entity.Board;
 import com.board.service.BoardService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @GetMapping("/")
+    @GetMapping("/list")
     public String list() {
         return "board/list.html";
     }
