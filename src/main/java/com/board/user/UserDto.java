@@ -1,13 +1,11 @@
-package com.board.domain.dto;
+package com.board.user;
 
-import com.board.domain.entity.User;
+import com.board.user.User;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @NoArgsConstructor
 @Data

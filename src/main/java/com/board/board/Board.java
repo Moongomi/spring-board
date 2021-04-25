@@ -1,4 +1,4 @@
-package com.board.domain.entity;
+package com.board.board;
 
 import lombok.AccessLevel;
 import lombok.Builder;

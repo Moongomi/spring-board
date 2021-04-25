@@ -1,7 +1,7 @@
-package com.board.controller;
+package com.board.user;
 
-import com.board.domain.dto.UserDto;
-import com.board.service.UserService;
+import com.board.user.UserDto;
+import com.board.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,5 +26,15 @@ public class UserController {
     public String signup(UserDto userDto){
         userService.saveUser(userDto);
         return "redirect:/";
+    }
+
+    @GetMapping("/login")
+    public String signin(UserDto userDto){
+        return "login";
+    }
+
+    @GetMapping("/user/login/result")
+    public String dispLoginResult() {
+        return "/loginok";
     }
 }

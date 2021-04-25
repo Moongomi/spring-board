@@ -1,9 +1,8 @@
-package com.board.domain.dto;
+package com.board.board;
 /*
 DTO는 Controller와 Service 사이에서 데이터를 주고받습니다.
  */
 
-import com.board.domain.entity.Board;
 import lombok.*;
 
 import java.time.LocalDateTime;

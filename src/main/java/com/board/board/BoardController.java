@@ -1,8 +1,7 @@
-package com.board.controller;
+package com.board.board;
 
-import com.board.domain.dto.BoardDto;
-import com.board.domain.entity.Board;
-import com.board.service.BoardService;
+import com.board.board.BoardDto;
+import com.board.board.BoardService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
