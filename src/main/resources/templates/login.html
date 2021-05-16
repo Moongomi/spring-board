@@ -9,15 +9,11 @@
 </head>
 <body>
 <div class="navbar navbar-dark bg-dark shadow-sm mb-3">
-    <div class="container d-flex justify-content-between">
-        <a href="/" class="navbar-brand d-flex align-items-center">
-            <strong>스프링 게시판</strong>
-        </a>
-    </div>
+    <div th:replace="/common/header :: div"></div>
 
 </div>
 <div class="container">
-    <form action="/login" method="post">
+    <form action="/user/login" method="post">
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
         <div class="text-center" style="padding:50px 0">
             <div class="logo">login</div>

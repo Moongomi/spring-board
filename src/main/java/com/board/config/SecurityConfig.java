@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+
 @AllArgsConstructor
 @EnableWebSecurity
 @Configuration
@@ -23,7 +24,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers("/post").authenticated()
                 .anyRequest().permitAll()
                 .and().headers().frameOptions().sameOrigin()
-                .and().formLogin().loginPage("/login").defaultSuccessUrl("/user/login/result");
+                .and().formLogin().loginPage("/user/login").defaultSuccessUrl("/user/login/result")
+                .and()
+                .logout()
+                //.logoutUrl("/user/logout")
+                .logoutSuccessUrl("/") // 로그아웃 성공시 리다이렉트 주소
+                .invalidateHttpSession(true); // 로그아웃 이후 세션 전체 삭제 여부
     }
 
     @Override

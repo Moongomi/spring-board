@@ -4,24 +4,28 @@
     <meta charset="UTF-8">
     <title>게시판 - 홈</title>
     <link rel='stylesheet' href='/webjars/bootstrap/4.5.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='/css/modal.css'>
 </head>
 <body>
 <div class="navbar navbar-dark bg-dark shadow-sm mb-3">
-    <div class="container d-flex justify-content-between">
-        <a href="/" class="navbar-brand d-flex align-items-center">
-            <strong>스프링 게시판</strong>
-        </a>
-    </div>
+    <div th:replace="/common/header :: div"></div>
     <div class="row">
         <div class="col-auto mr-auto"></div>
         <div class="col-auto">
-            <a class="btn btn-primary" th:href="@{/register}" role="button">회원가입</a>
-            <a class="btn btn-secondary" th:href="@{/login}" role="button">로그인</a>
+            <a class="btn btn-primary" th:href="@{/user/register}" role="button">회원가입</a>
+            <a class="btn btn-secondary" th:href="@{/user/login}" role="button">로그인</a>
         </div>
     </div>
 </div>
 
+<div th:replace="/event :: div"></div>
+
 <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!--<script src="/js/modal.js"></script>-->
+<script>
+
+    $('#myModal').modal("show");
+</script>
 </body>
 </html>
