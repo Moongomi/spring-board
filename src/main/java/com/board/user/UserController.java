@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,9 +29,10 @@ public class UserController {
     }
 
     @PostMapping("/user/register")
-    public String signup(UserDto userDto){
-        userService.saveUser(userDto);
-        return "redirect:/";
+    public String signup(UserDto userDto,HttpServletRequest request,HttpServletResponse response) throws ServletException {
+        userService.saveUser(userDto,request,response);
+        request.login(userDto.getUsername(),userDto.getPassword());
+        return "redirect:/board/list";
     }
 
     @GetMapping("/user/login")
@@ -38,15 +40,10 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping("/user/login/result")
-    public String dispLoginResult() {
-        return "/loginok";
-    }
-/*
     @GetMapping("/user/logout")
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
         return "redirect:/";
     }
-    */
+
 }
