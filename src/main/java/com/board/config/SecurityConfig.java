@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers("/post").authenticated()
                 .anyRequest().permitAll()
                 .and().headers().frameOptions().sameOrigin()
-                .and().formLogin().loginPage("/user/login").defaultSuccessUrl("/user/login/result")
+                .and().formLogin().loginPage("/user/login").defaultSuccessUrl("/board/list")
                 .and()
                 .logout()
                 //.logoutUrl("/user/logout")
