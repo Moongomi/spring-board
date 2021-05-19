@@ -1,4 +1,4 @@
-package com.board.web.dro;
+package com.board.web.dto;
 /*
 DTO는 Controller와 Service 사이에서 데이터를 주고받습니다.
  */

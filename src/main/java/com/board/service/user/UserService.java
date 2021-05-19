@@ -1,7 +1,7 @@
 package com.board.service.user;
 
 import com.board.domain.user.UserRepository;
-import com.board.web.dro.UserDto;
+import com.board.web.dto.UserDto;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;

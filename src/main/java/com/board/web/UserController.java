@@ -1,7 +1,7 @@
 package com.board.web;
 
 import com.board.service.user.UserService;
-import com.board.web.dro.UserDto;
+import com.board.web.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;

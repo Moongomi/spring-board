@@ -1,4 +1,4 @@
-package com.board.web.dro;
+package com.board.web.dto;
 
 import com.board.domain.user.User;
 import lombok.Builder;
