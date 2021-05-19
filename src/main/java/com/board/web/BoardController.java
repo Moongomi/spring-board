@@ -1,8 +1,8 @@
-package com.board.board;
+package com.board.web;
 
-import com.board.board.BoardDto;
-import com.board.board.BoardService;
+import com.board.service.board.BoardService;
 
+import com.board.web.dro.BoardDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

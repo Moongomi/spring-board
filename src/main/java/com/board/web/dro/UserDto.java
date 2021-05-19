@@ -1,6 +1,6 @@
-package com.board.user;
+package com.board.web.dro;
 
-import com.board.user.User;
+import com.board.domain.user.User;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;

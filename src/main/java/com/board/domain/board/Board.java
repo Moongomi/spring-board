@@ -1,4 +1,4 @@
-package com.board.board;
+package com.board.domain.board;
 
 import lombok.AccessLevel;
 import lombok.Builder;

@@ -1,7 +1,6 @@
 package com.board.config;
 
-import antlr.ASTFactory;
-import com.board.user.UserService;
+import com.board.service.user.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -9,9 +8,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 
 
 @AllArgsConstructor

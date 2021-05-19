@@ -1,7 +1,7 @@
-package com.board.user;
+package com.board.web;
 
-import com.board.user.UserDto;
-import com.board.user.UserService;
+import com.board.service.user.UserService;
+import com.board.web.dro.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -28,10 +28,23 @@ public class UserController {
         return "register.html";
     }
 
+    /*
     @PostMapping("/user/register")
-    public String signup(UserDto userDto,HttpServletRequest request,HttpServletResponse response) throws ServletException {
+    public String signup(UserDto userDto, HttpServletRequest request, HttpServletResponse response) throws ServletException {
         userService.saveUser(userDto,request,response);
         request.login(userDto.getUsername(),userDto.getPassword());
+        return "redirect:/board/list";
+    }
+
+    */
+    @PostMapping("/user/register")
+    public String signup(UserDto userDto,HttpServletRequest request,HttpServletResponse response){
+        userService.saveUser(userDto,request,response);
+        try{
+        	request.login(userDto.getUsername(),userDto.getPassword());
+        }catch(ServletException e){
+        	System.out.println(e.getMessage());
+        }
         return "redirect:/board/list";
     }
 

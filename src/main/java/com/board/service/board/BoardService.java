@@ -1,7 +1,7 @@
-package com.board.board;
+package com.board.service.board;
 
-import com.board.board.BoardDto;
-import com.board.board.BoardRepository;
+import com.board.web.dro.BoardDto;
+import com.board.domain.board.BoardRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
