@@ -34,17 +34,6 @@ public class BoardController {
         boardService.savePost(boardSaveDto);
         return "redirect:/board/list";
     }
-    /*
-
-    @GetMapping("/board/post/{id}")
-    public String detail(@PathVariable("id") Long id, Model model) {
-        BoardSaveDto boardDto = boardService.getPost(id);
-        model.addAttribute("post", BoardSaveDto);
-        return "board/detail.html";
-    }
-
-     */
-
 
     @GetMapping("/board/post/{id}")
     public String findById (@PathVariable Long id,Model model){
@@ -52,6 +41,4 @@ public class BoardController {
         model.addAttribute("post",boardDto);
         return "board/detail.html";
     }
-
-
 }

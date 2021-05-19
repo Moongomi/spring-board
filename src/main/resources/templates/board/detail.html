@@ -18,6 +18,9 @@
     <div class="row mt-3">
         <div class="col-auto mr-auto"></div>
         <div class="col-auto">
+            <a class="btn btn-dark" th:href="@{'/board/list'}" role="button">목록</a>
+        </div>
+        <div class="col-auto">
             <a class="btn btn-info" th:href="@{'/post/edit/' + ${post.id}}" role="button">수정</a>
         </div>
         <div class="col-auto">

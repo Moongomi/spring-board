@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
 @Controller
@@ -28,15 +29,6 @@ public class UserController {
         return "register.html";
     }
 
-    /*
-    @PostMapping("/user/register")
-    public String signup(UserDto userDto, HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        userService.saveUser(userDto,request,response);
-        request.login(userDto.getUsername(),userDto.getPassword());
-        return "redirect:/board/list";
-    }
-
-    */
     @PostMapping("/user/register")
     public String signup(UserDto userDto,HttpServletRequest request,HttpServletResponse response){
         userService.saveUser(userDto,request,response);

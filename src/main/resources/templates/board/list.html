@@ -8,6 +8,12 @@
 <body>
 <div class="navbar navbar-dark bg-dark shadow-sm mb-3">
     <div th:replace="/common/header :: div"></div>
+    <div class="row">
+        <div class="col-auto mr-auto"></div>
+        <div class="col-auto">
+            <a class="btn btn-primary" th:href="@{/user/logout}" role="button">로그아웃</a>
+        </div>
+    </div>
 </div>
 <div class="container">
     <table class="table">
