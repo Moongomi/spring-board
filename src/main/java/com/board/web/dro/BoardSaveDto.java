@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 //@ToString
 @NoArgsConstructor
-public class BoardDto {
+public class BoardSaveDto {
     private Long id;
     private String author;
     private String title;
@@ -33,7 +33,7 @@ public class BoardDto {
     }
 
     @Builder
-    public BoardDto(Long id,String author,String title,String content,LocalDateTime createdDate,LocalDateTime modifiedDate){
+    public BoardSaveDto(Long id, String author, String title, String content, LocalDateTime createdDate, LocalDateTime modifiedDate){
         this.id = id;
         this.author = author;
         this.title = title;
@@ -41,8 +41,4 @@ public class BoardDto {
         this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;
     }
-
-
-
-
 }
