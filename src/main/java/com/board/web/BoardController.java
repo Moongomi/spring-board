@@ -27,14 +27,15 @@ public class BoardController {
     }
 
     @GetMapping("/board/post")
-    public String post() {
+    public String post(Model model,Authentication authentication) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        System.out.println(userDetails.getUsername());
+        model.addAttribute("author",userDetails.getUsername());
         return "board/post.html";
     }
 
     @PostMapping("/board/post")
-    public String save(BoardSaveDto boardSaveDto, Authentication authentication){
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        System.out.println(userDetails.getUsername());
+    public String save(BoardSaveDto boardSaveDto){
         boardService.savePost(boardSaveDto);
         return "redirect:/board/list";
     }
