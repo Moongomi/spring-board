@@ -31,20 +31,6 @@ public class BoardService {
                 .collect(Collectors.toList());
     }
 
-    @Transactional
-    public BoardSaveDto getPost(Long id) {
-        Board board = boardRepository.findById(id).get();
-
-        BoardSaveDto boardDto = BoardSaveDto.builder()
-                .id(board.getId())
-                .author(board.getAuthor())
-                .title(board.getTitle())
-                .content(board.getContent())
-                .modifiedDate(board.getModifiedDate())
-                .build();
-        return boardDto;
-    }
-
     public BoardDto findById(Long id){
         Board entity = boardRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다. id = "+id));
         return new BoardDto(entity);

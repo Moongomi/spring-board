@@ -3,7 +3,9 @@ package com.board.web;
 import com.board.service.user.UserService;
 import com.board.web.dto.UserDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +22,13 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/")
-    public String index() {
+    public String index(Authentication authentication) {
+        try{
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            return "redirect:/board/list";
+        }catch (NullPointerException e){
+            System.out.println(e);
+        }
         return "index";
     }
 
@@ -50,5 +58,4 @@ public class UserController {
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
         return "redirect:/";
     }
-
 }

@@ -6,6 +6,8 @@ import com.board.service.board.BoardService;
 import com.board.web.dto.BoardDto;
 import com.board.web.dto.BoardSaveDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +32,9 @@ public class BoardController {
     }
 
     @PostMapping("/board/post")
-    public String save(BoardSaveDto boardSaveDto){
+    public String save(BoardSaveDto boardSaveDto, Authentication authentication){
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        System.out.println(userDetails.getUsername());
         boardService.savePost(boardSaveDto);
         return "redirect:/board/list";
     }
