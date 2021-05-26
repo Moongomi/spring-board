@@ -5,14 +5,13 @@ import com.board.service.board.BoardService;
 
 import com.board.web.dto.BoardDto;
 import com.board.web.dto.BoardSaveDto;
+import com.board.web.dto.BoardUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @Controller
@@ -29,7 +28,6 @@ public class BoardController {
     @GetMapping("/board/post")
     public String post(Model model,Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        System.out.println(userDetails.getUsername());
         model.addAttribute("author",userDetails.getUsername());
         return "board/post.html";
     }
@@ -46,4 +44,18 @@ public class BoardController {
         model.addAttribute("post",boardDto);
         return "board/detail.html";
     }
+
+    @GetMapping("/post/edit/{id}")
+    public String edit(@PathVariable("id") Long id, Model model) {
+        BoardDto boardDto = boardService.findById(id);
+        model.addAttribute("post", boardDto);
+        return "board/edit.html";
+    }
+
+    @PutMapping("/post/edit/{id}")
+    public String update(@PathVariable Long id, BoardUpdateDto requestDto){
+        boardService.update(id,requestDto);
+        return "redirect:/board/list";
+    }
+
 }
