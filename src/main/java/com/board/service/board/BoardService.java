@@ -38,6 +38,11 @@ public class BoardService {
                 .map(BoardListDto::new)
                 .collect(Collectors.toList());
     }
+    @Transactional
+    public void delete(Long id){
+        Board board = boardRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다. id = "+id));
+        boardRepository.delete(board);
+    }
 
     public BoardDto findById(Long id){
         Board entity = boardRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다. id = "+id));

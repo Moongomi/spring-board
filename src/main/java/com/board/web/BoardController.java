@@ -57,5 +57,10 @@ public class BoardController {
         boardService.update(id,requestDto);
         return "redirect:/board/list";
     }
+    @DeleteMapping("/post/{id}")
+    public String delete(@PathVariable("id") Long id) {
+        boardService.delete(id);
+        return "redirect:/board/list";
+    }
 
 }
