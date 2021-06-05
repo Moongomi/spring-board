@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <title>게시판 - 목록</title>
     <link rel='stylesheet' href='/webjars/bootstrap/4.5.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
 <div class="navbar navbar-dark bg-dark shadow-sm mb-3">
     <div th:replace="/common/header :: div"></div>
     <div class="row">
         <div class="col-auto mr-auto"></div>
-        <div class="col-auto">
+
+        <div class="col-auto mr-auto">
             <a class="btn btn-primary" th:href="@{/user/logout}" role="button">로그아웃</a>
         </div>
     </div>
@@ -46,6 +48,18 @@
     </table>
     <div class="row">
         <div class="col-auto mr-auto"></div>
+        <div class="col-auto">
+            <!-- 검색 form -->
+            <!--<form th:action="@{'/board/search/' + ${keyword}}" method="GET">-->
+            <form action="/board/search" method="GET">
+                <div>
+                    <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
+
+
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+        </div>
         <div class="col-auto">
             <a class="btn btn-primary" th:href="@{/board/post}" role="button">글쓰기</a>
         </div>

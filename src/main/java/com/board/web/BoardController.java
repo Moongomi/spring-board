@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Controller
 public class BoardController {
@@ -45,22 +47,28 @@ public class BoardController {
         return "board/detail.html";
     }
 
-    @GetMapping("/post/edit/{id}")
+    @GetMapping("/board/edit/{id}")
     public String edit(@PathVariable("id") Long id, Model model) {
         BoardDto boardDto = boardService.findById(id);
         model.addAttribute("post", boardDto);
         return "board/edit.html";
     }
 
-    @PutMapping("/post/edit/{id}")
+    @PutMapping("/board/edit/{id}")
     public String update(@PathVariable Long id, BoardUpdateDto requestDto){
         boardService.update(id,requestDto);
         return "redirect:/board/list";
     }
-    @DeleteMapping("/post/{id}")
+    @DeleteMapping("/board/post/{id}")
     public String delete(@PathVariable("id") Long id) {
         boardService.delete(id);
         return "redirect:/board/list";
+    }
+
+    @GetMapping("/board/search")
+    public String search(@RequestParam(value="keyword") String keyword, Model model) {
+        model.addAttribute("postList", boardService.searchPosts(keyword));
+        return "board/list.html";
     }
 
 }
