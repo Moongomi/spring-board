@@ -4,9 +4,14 @@ import com.board.domain.board.Board;
 import com.board.service.board.BoardService;
 
 import com.board.web.dto.BoardDto;
+import com.board.web.dto.BoardListDto;
 import com.board.web.dto.BoardSaveDto;
 import com.board.web.dto.BoardUpdateDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -21,9 +26,30 @@ public class BoardController {
 
     private final BoardService boardService;
 
+    /*
     @GetMapping("/board/list")
-    public String list(Model model){
-        model.addAttribute("postList",boardService.findAllDesc());
+    public String list(Model model, @RequestParam(value="page", defaultValue = "1") Integer pageNum){
+        model.addAttribute("postList",boardService.getBoardList(pageNum));
+        model.addAttribute("pageList",boardService.getPageList(pageNum));
+        return "board/list.html";
+    }
+
+     */
+
+    @GetMapping("/board/list")
+    public String list(Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        //model.addAttribute("postList", boardService.findAllDesc());
+        //Page<Board> boardList = boardService.getBoardList(pageable);
+
+        List<BoardListDto> boardList = boardService.getBoardList(pageable);
+        Integer[] pageList = boardService.getPageList(pageable);
+        //System.out.println(pageList[0]);
+        //pageList.stream().forEach(System.out::println);
+        for(int i:pageList){
+            System.out.println(i);
+        }
+        model.addAttribute("postList", boardList);
+        model.addAttribute("pageList", pageList);
         return "board/list.html";
     }
 

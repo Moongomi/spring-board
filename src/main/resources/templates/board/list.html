@@ -48,6 +48,13 @@
     </table>
     <div class="row">
         <div class="col-auto mr-auto"></div>
+        <div class = "col-auto mr-auto">
+            <div>
+                <span th:each="pageNum : ${pageList}" th:inline="text">
+                    <a th:href="@{'/board/list?page=' + ${pageNum}}">[[${pageNum}]]</a>
+                </span>
+            </div>
+        </div>
         <div class="col-auto">
             <!-- 검색 form -->
             <!--<form th:action="@{'/board/search/' + ${keyword}}" method="GET">-->
