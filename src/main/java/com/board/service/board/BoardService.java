@@ -62,16 +62,9 @@ public class BoardService {
         return pageList;
     }
 
-    @Transactional(readOnly = true)
-    public List<BoardListDto> findAllDesc(){
-        return boardRepository.findAllDesc().stream()
-                .map(BoardListDto::new)
-                .collect(Collectors.toList());
-    }
-
     @Transactional
-    public List<BoardListDto> searchPosts(String keyword) {
-        return boardRepository.findAllSearch(keyword).stream()
+    public List<BoardListDto> searchPosts(String keyword,Pageable pageable) {
+        return boardRepository.findAllSearch(keyword,pageable).stream()
                 .map(BoardListDto::new)
                 .collect(Collectors.toList());
     }

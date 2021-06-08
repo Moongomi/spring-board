@@ -73,9 +73,10 @@ public class BoardController {
         return "redirect:/board/list";
     }
 
+
     @GetMapping("/board/search")
-    public String search(@RequestParam(value="keyword") String keyword, Model model) {
-        model.addAttribute("postList", boardService.searchPosts(keyword));
+    public String search(@RequestParam(value="keyword") String keyword, Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        model.addAttribute("postList", boardService.searchPosts(keyword,pageable));
         return "board/list.html";
     }
 
