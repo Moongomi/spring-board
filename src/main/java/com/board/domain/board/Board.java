@@ -19,6 +19,7 @@ public class Board{
 
     @Id
     @GeneratedValue
+    @Column(name="id")
     private Long id;
 
     @Column(length = 10,nullable = false)

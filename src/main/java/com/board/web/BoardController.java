@@ -4,9 +4,14 @@ import com.board.domain.board.Board;
 import com.board.service.board.BoardService;
 
 import com.board.web.dto.BoardDto;
+import com.board.web.dto.BoardListDto;
 import com.board.web.dto.BoardSaveDto;
 import com.board.web.dto.BoardUpdateDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -22,8 +27,11 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/board/list")
-    public String list(Model model){
-        model.addAttribute("postList",boardService.findAllDesc());
+    public String list(Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        List<BoardListDto> boardList = boardService.getBoardList(pageable);
+        Integer[] pageList = boardService.getPageList(pageable);
+        model.addAttribute("postList", boardList);
+        model.addAttribute("pageList", pageList);
         return "board/list.html";
     }
 
